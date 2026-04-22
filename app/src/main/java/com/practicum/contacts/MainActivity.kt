@@ -16,6 +16,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -58,8 +59,9 @@ fun ContactDetails(contact: Contact) {
 @Composable
 fun FullName(name: String, surname: String?, familyName: String, isFavorite: Boolean) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        val fullName = remember(name, surname) { "$name ${surname ?: ""} " }
         Text(
-            "$name ${surname ?: ""} ",
+            fullName,
             style = TextStyle(color = Color.Black, fontWeight = FontWeight.W500, fontSize = 16.sp)
         )
         Row {
